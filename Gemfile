@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 # development dependencies will be added by default to the :development group.
 
 gem 'core_candidate', path: 'components/core_candidate'
+gem 'core_address', path: 'components/core_candidate/components/core_address'
 
 gemspec
 

@@ -2,19 +2,20 @@ require_dependency 'core_attendance/notification'
 
 module CoreAttendance
   class NotificationService
+
       
     attr_accessor :cadastre, :notification
 
     AUTH_TOKEN = APP_ENV['onesignal']['auth_token']
     APP_ID     = APP_ENV['onesignal']['app_id']
 
-    def initialize(cadastre = nil)
+    def initialize(cadastre: nil)
       @cadastre = cadastre
     end
 
     def create_notification(category_id: 1, content: "", title: "", link: false, push: false)
 
-      @notification = Notification.new do |notification|
+      @notification = Notification.new.tap do |notification|
         notification.cadastre_id              = @cadastre.id
         notification.title                    = title
         notification.content                  = content
