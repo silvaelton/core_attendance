@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 5.0.2"
   s.add_dependency "core_candidate"
   s.add_dependency "pg"
+  s.add_dependency "one_signal"
 
 end
