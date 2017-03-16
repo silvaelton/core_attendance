@@ -69,13 +69,13 @@ module CoreAttendance
 
     end
 
-    def upload_required
+    def upload_required 
 
         return false if @context_id.nil?
         
         case @context_id
         when 1
-      
+        
         if (@cadastre.main_income != @cadastre_mirror.main_income) || @cadastre.current_situation_id == 3
           @ticket.income_uploads.new if !@ticket.income_uploads.present?
         end

@@ -22,6 +22,4 @@ Gem::Specification.new do |s|
   s.add_dependency "pg"
   s.add_dependency "one_signal"
 
-  s.add_development_dependency "rspec-rails"
-  s.add_development_dependency "factory_girl"
 end

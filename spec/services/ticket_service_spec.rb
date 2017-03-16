@@ -50,4 +50,60 @@ describe CoreAttendance::TicketService do
     end
 
   end
+
+  context 'upload document ' do
+    
+    before { 
+      @cadastre = CoreAttendance::Candidate::Cadastre.find(548574) 
+      @cadastre = CoreCandidate::CadastrePresenter.new(@cadastre)
+    }
+
+    it 'allow upload document by context 1' do 
+
+      @service = CoreAttendance::TicketService.new.tap do |service|
+        service.cadastre    = @cadastre
+        service.context_id  = 1 
+      end
+      
+      @service.create do |create|
+        create.notification = true
+        create.push         = false
+      end
+
+
+      @service.upload_required
+
+      expect(@service.cadastre_mirror.present?).to eq(true)
+      expect(@service.ticket.income_uploads.present?).to eq(false)
+
+    end
+
+
+    it 'disallow upload document by context 1' do 
+
+      @service = CoreAttendance::TicketService.new.tap do |service|
+        service.cadastre    = @cadastre
+        service.context_id  = 1 
+      end
+      
+      @service.create do |create|
+        create.notification = true
+        create.push         = false
+      end
+
+
+      @service.upload_required
+
+      expect(@service.cadastre_mirror.present?).to eq(true)
+      expect(@service.ticket.income_uploads.present?).to eq(false)
+
+    end
+
+
+    it 'upload document' do 
+    end
+
+    it 'upload document with association dependent' do 
+    end
+  end 
 end
